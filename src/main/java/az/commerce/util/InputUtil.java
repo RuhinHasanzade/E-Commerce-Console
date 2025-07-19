@@ -10,4 +10,9 @@ public class InputUtil {
         System.out.print(text);
         return sc.nextInt();
     }
+
+    public static String getStr(String text) {
+        System.out.print(text);
+        return sc.next();
+    }
 }

@@ -1,5 +1,8 @@
 package az.commerce.util;
 
+import az.commerce.database.DataBase;
+import az.commerce.entity.Users;
+
 import java.util.Scanner;
 
 public class MenuUtil {
@@ -17,9 +20,9 @@ public class MenuUtil {
 
 
             if (selectedNum ==1){
-                System.out.println("Login basladi");
+                System.out.println("Login");
             } else if (selectedNum ==2) {
-                System.out.println("Register Basladi");
+                userRegister();
             } else if (selectedNum == 3) {
                 System.out.println("Produclar");
             } else if (selectedNum == 4) {
@@ -28,6 +31,18 @@ public class MenuUtil {
             }
 
         }
+    }
+
+
+    private static void userRegister() {
+        String username = InputUtil.getStr("Enter Username: ");
+        String password = InputUtil.getStr("Enter Password");
+
+        Users user =  new Users(username,password);
+
+        DataBase.usersList.add(user);
+        System.out.println("--------------SUCCESFULL--------------");
+        System.out.println(DataBase.usersList);
     }
 
 
