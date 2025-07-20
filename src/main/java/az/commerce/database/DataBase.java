@@ -9,4 +9,14 @@ import java.util.List;
 public class DataBase {
     public static List<Users> usersList = new ArrayList<>();
     public static List<Product> productList = new ArrayList<>();
+
+    static
+    {
+        productList.add(new Product(1,"Ipone 13",2000));
+        productList.add(new Product(2,"ASUS",2000));
+        productList.add(new Product(3,"RAZER",300));
+    }
+
+
+
 }

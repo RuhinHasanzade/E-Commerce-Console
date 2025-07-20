@@ -1,6 +1,7 @@
 package az.commerce.util;
 
 import az.commerce.database.DataBase;
+import az.commerce.entity.Product;
 import az.commerce.entity.Users;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class MenuUtil {
             } else if (selectedNum ==2) {
                 userRegister();
             } else if (selectedNum == 3) {
-                System.out.println("Produclar");
+                showProducts();
             } else if (selectedNum == 4) {
                 System.out.println("Exit....");
                 break;
@@ -67,6 +68,14 @@ public class MenuUtil {
                 return;
             }
         }
+    }
+
+
+    private static void showProducts() {
+       List <Product> productList =  DataBase.productList;
+        System.out.println("--------------Products--------------");
+
+        System.out.println(productList);
     }
 
 
