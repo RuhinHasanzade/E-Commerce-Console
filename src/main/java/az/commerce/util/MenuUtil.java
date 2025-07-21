@@ -59,6 +59,7 @@ public class MenuUtil {
                 String password = InputUtil.getStr("Enter Password: ");
                 if (user.getPassword().equals(password)) {
                     System.out.println("--------------SUCCESFULL--------------");
+                    DataBase.currentUser = user;
                 }else {
                     System.out.println("Parol Yalnisdir");
                     return;
@@ -76,6 +77,25 @@ public class MenuUtil {
         System.out.println("--------------Products--------------");
 
         System.out.println(productList);
+
+         int productId =  InputUtil.getInt("Mehsul secin: ");
+         Product selectedPro = addToCart(productId);
+
+
+
+    }
+
+
+    private static Product addToCart(int id) {
+        List <Product> productList =  DataBase.productList;
+
+        for(Product product : productList) {
+            if(product.getId() == id) {
+                return product;
+            }
+        }
+
+        return null;
     }
 
 

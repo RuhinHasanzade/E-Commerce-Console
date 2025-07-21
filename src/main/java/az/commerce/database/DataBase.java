@@ -10,6 +10,8 @@ public class DataBase {
     public static List<Users> usersList = new ArrayList<>();
     public static List<Product> productList = new ArrayList<>();
 
+    public static Users currentUser = null;
+
     static
     {
         productList.add(new Product(1,"Ipone 13",2000));
