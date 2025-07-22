@@ -56,6 +56,7 @@ public class MenuUtil {
         String username = InputUtil.getStr("Enter Username: ");
 
         List<Users> usersList = DataBase.usersList;
+        boolean found  = false;
 
         for(Users user : usersList) {
             if (user.getUserName().equals(username)) {
@@ -63,15 +64,17 @@ public class MenuUtil {
                 if (user.getPassword().equals(password)) {
                     System.out.println("--------------SUCCESFULL--------------");
                     DataBase.currentUser = user;
-                }else {
+                    found = true;
+                    break;
+                } else {
                     System.out.println("Parol Yalnisdir");
                     return;
                 }
-            }else {
-                System.out.println("Istifadechi Tapilmadi");
-                return;
             }
         }
+            if (!found) {
+                System.out.println("Istifadechi tapilmadi");
+            }
     }
 
 
@@ -109,10 +112,12 @@ public class MenuUtil {
 
 
     private static void showCart() {
-        if(DataBase.currentUser == null) {
-            System.out.println("Login olun");
-            return;
-        }
+
+            if(DataBase.currentUser == null) {
+                System.out.println("Login olun");
+                return;
+            }
+
 
         List<Product> cart = DataBase.currentUser.getCart();
 
