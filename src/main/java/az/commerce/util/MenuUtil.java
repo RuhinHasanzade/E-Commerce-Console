@@ -81,6 +81,12 @@ public class MenuUtil {
          int productId =  InputUtil.getInt("Mehsul secin: ");
          Product selectedPro = addToCart(productId);
 
+         if(selectedPro != null && DataBase.currentUser != null ) {
+             DataBase.currentUser.getCart().add(selectedPro);
+             System.out.println("Mehsul Sebete elave olundu: " + selectedPro);
+         } else  {
+             System.out.println("Mehsul tapilmadi ve ya istifadechi login olmayb");
+         }
 
 
     }
