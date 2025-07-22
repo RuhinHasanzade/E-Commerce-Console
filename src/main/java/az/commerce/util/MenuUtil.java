@@ -15,7 +15,8 @@ public class MenuUtil {
                     1. LOGIN
                     2. REGISTER
                     3. SHOW PRODCUT
-                    4. EXIT
+                    4. SHOW CART
+                    5. EXIT
                     """);
 
             int selectedNum = InputUtil.getInt("Zehmet Olmasa secin:");
@@ -28,6 +29,8 @@ public class MenuUtil {
             } else if (selectedNum == 3) {
                 showProducts();
             } else if (selectedNum == 4) {
+                showCart();
+            } else if (selectedNum == 5) {
                 System.out.println("Exit....");
                 break;
             }
@@ -102,6 +105,24 @@ public class MenuUtil {
         }
 
         return null;
+    }
+
+
+    private static void showCart() {
+        if(DataBase.currentUser == null) {
+            System.out.println("Login olun");
+            return;
+        }
+
+        List<Product> cart = DataBase.currentUser.getCart();
+
+        if (cart.isEmpty()) {
+            System.out.println("Sebetiniz bosdur");
+        } else  {
+            for (Product product : cart) {
+                System.out.println(product);
+            }
+        }
     }
 
 
